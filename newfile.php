@@ -1,4 +1,4 @@
 <?php
-echo "hello amir jfkjfjksdfdsklabdela !   !     !"
+echo "hello amir ddfdsf !   !     !"
 ?>
 
