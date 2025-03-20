@@ -5,7 +5,7 @@ Here's a README file tailored for the backend of **Travel Habesha**, developed i
 
 # Travel Habesha - Backend
 
-**Travel Habesha** is a tourism management system designed to streamline travel planning. This backend, built with PHP, powers the platform’s core functionalities, handling data storage, authentication, and business logic for services like car rentals, hotel reservations, and holiday/event packages.
+**Travel Habesha** is a tourism management system designed to streamline travel  planning. This backend, built with PHP, powers the platform’s core functionalities, handling data storage, authentication, and business logic for services like car rentals, hotel reservations, and holiday/event packages.
 
 ## Features
 
