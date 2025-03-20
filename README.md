@@ -44,7 +44,7 @@ Here's a README file tailored for the backend of **Travel Habesha**, developed i
    ```
 
 2. **Set up the environment**  
-   - Configure `.env` file with database and authentication details.
+   - Configure `.env` file with database and authentication  details.
 
 3. **Install dependencies**  
    ```sh
