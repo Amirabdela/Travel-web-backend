@@ -1,5 +1,5 @@
 # Travel-web-backend
-Here's a README file tailored for the backend of **Travel Habesha**, developed in PHP. Let me know if you need any modifications.
+Here's a README file tailored for the backend of **Travel Habesha**, developed in PHP.
 
 ---
 
