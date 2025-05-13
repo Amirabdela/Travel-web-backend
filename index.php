@@ -66,7 +66,7 @@
                 </div>
                 <!-- Navigation links -->
                 <ul>
-                    <li class="nav-links"><a href="/index.php">Home</a></li>
+                    <li class="nav-links"><a href="../Travel-web-backend/index.php">Home</a></li>
                     <li class="nav-links"><a href="../Travel-web-backend/packages.php">Packages</a></li>
                     <li class="nav-links"><a href="../Travel-web-backend/shop.php">Shop</a></li>
                     <li class="nav-links"><a href="../Travel-web-backend/rentalcar.php">Travel Cars</a></li>
