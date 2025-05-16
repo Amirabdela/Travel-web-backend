@@ -1,54 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
-<head>
-  <title>Travel Habesha</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sono:wght@200..800&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>  
-  <script src="mainJS/index.js"></script>
-</head>
-<body>
-  <!-- Header Section -->
-  <section class="animate__animated animate__slideInLeft anim">
-    <div class="home-w animate__animated animate__pulse"><p>only until
-    <br>11.2.25</p></div>
-    <div class="pack-va">
-     <p class="pack-sale"> PACKAGE
-      <br>
-      SALE
-      <br>
-      -50%
-      <br>
-      <a href="shop.html">shop now</a>
-    </p> 
-  </div>
-  </section>
-  <header>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <!-- Container for social icons and right links -->
-        <div class="con">  
-            <!-- Social icons and language options -->
-            <div class="socials"> 
-                <i class="fa-solid fa-earth-africa"></i><span class="lang">LANGUAGES</span>
-                <i class="fa-solid fa-share-nodes"></i><span class="lang">OUR SOCIALS</span>
-                <i class="fa-brands fa-facebook-f"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-twitter"></i>
-                <i class="fa-brands fa-pinterest-p"></i>
-            </div>
-            <!-- Right side links (Tour Packages and Contact Us) -->
-            <div class="right-links">
-                <a class="fav" href="#"><i class="fa-regular fa-star"></i>TOUR PACKAGES</a>
-                <a class="contact" href="#"><i class="fa-solid fa-location-dot"></i>CONTACT US</a>
-=======
 
 <head>
     <title>Travel Habesha</title>
@@ -196,7 +147,6 @@
                     <li class="sidebar-help"><a href="customerService.html">Customer Service</a></li>
                     <li class="sidebar-help sidebar-help-last"><a href="signIn.html">Sign in</a></li>
                 </ul>
->>>>>>> aa0917b605de5a0ceab4209cd0f429ad664d9daf
             </div>
         </div>
     </div>
