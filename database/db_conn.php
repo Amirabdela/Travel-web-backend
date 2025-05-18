@@ -2,6 +2,17 @@
 $server = "localhost";
 $username = "root";
 $password = "";
+<<<<<<< HEAD
+$conn = new mysqli($server, $username, $password);
+if (!$conn->connect_error) {
+ die("Connection failed: " );
+}
+echo "Connected successfully";
+?>
+<?php
+
+?>
+=======
 
 // SQL statement to create a database
 $sql = "CREATE DATABASE user";
@@ -25,3 +36,4 @@ if ($conn->query($sql) === TRUE) {
 // Close connection
 $conn->close();
 ?>
+>>>>>>> aa0917b605de5a0ceab4209cd0f429ad664d9daf
