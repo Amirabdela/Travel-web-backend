@@ -1,13 +1,29 @@
+<?php
+require_once __DIR__ . '/includes/auth_functions.php';
+startSecureSession();
+require_once __DIR__ . '/connect.php';
+require_once __DIR__ . '/includes/header.php';
+// Get all rental cars
+$stmt = $pdo->query("SELECT * FROM rental_cars ORDER BY price_per_day ASC");
+$cars = $stmt->fetchAll();
+
+// Get unique car types for filter
+$stmt = $pdo->query("SELECT DISTINCT type FROM rental_cars");
+$types = $stmt->fetchAll(PDO::FETCH_COLUMN);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <title>Rental Cars - Travel Habesha</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="styles/cars.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sono:wght@200..800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&family=Sono&display=swap"
         rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -42,7 +58,7 @@
                 <i class="small-block fas fa-bars menu-icon"></i>
             </div>
             <ul>
-                <li class="nav-links"><a href="../Travel-web-backend/index.php">Home</a></li>
+                <li class="nav-links"><a href="/index.php">Home</a></li>
                 <li class="nav-links"><a href="../Travel-web-backend/packages.php">Packages</a></li>
                 <li class="nav-links"><a href="../Travel-web-backend/shop.php">Shop</a></li>
                 <li class="nav-links"><a href="../Travel-web-backend/rentalcar.php">Travel Cars</a></li>
@@ -71,201 +87,83 @@
                     <span class="star" data-value="4">&#9733;</span>
                     <span class="star" data-value="5">&#9733;</span>
                 </div>
-                <!-- <p id="rating-output">Rating: 0</p> -->
-                <div class="price"><span>1000$</span>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="car-card">
-        <a href="https://www.ethiopiacarrentals.com/shop/">
 
-            <img src="assets/car2.jpg" alt="frendship addis ababa">
-            <div class="car-hover">
-                <h1>BMW 7</h1>
-                <div class="star-rating">
-                    <span class="star" data-value="1">&#9733;</span>
-                    <span class="star" data-value="2">&#9733;</span>
-                    <span class="star" data-value="3">&#9733;</span>
-                    <span class="star" data-value="4">&#9733;</span>
-                    <span class="star" data-value="5">&#9733;</span>
+                <div class="filter-group">
+                    <label for="price-range">Price Range</label>
+                    <select id="price-range">
+                        <option value="0-1000">Any Price</option>
+                        <option value="0-50">Under $50/day</option>
+                        <option value="50-100">$50 - $100/day</option>
+                        <option value="100-200">$100 - $200/day</option>
+                        <option value="200-500">$200+/day</option>
+                    </select>
                 </div>
-                <!-- <p id="rating-output">Rating: 0</p> -->
-                <div class="price"><span>1000$ </span>
+
+                <button type="button" id="search-cars" class="btn-primary">Search</button>
+                </form>
+            </div>
+</section>
+
+<!-- Cars Grid -->
+<section class="rental-cars-section">
+    <div class="">
+        <div class="cars-grid" id="cars-container">
+            <?php foreach ($cars as $car): ?>
+            <div class="car-card" data-type="<?php echo $car['type']; ?>"
+                data-price="<?php echo $car['price_per_day']; ?>">
+                <img src="<?php echo $car['image_path']; ?>" alt="<?php echo $car['model']; ?>">
+                <div class="car-info">
+                    <h3><?php echo $car['model']; ?></h3>
+                    <div class="car-type">
+                        <i class="fas fa-car"></i> <?php echo ucfirst($car['type']); ?>
+                    </div>
+                    <div class="car-rating">
+                        <?php for ($i = 0; $i < 5; $i++): ?>
+                        <i class="fas fa-star <?php echo $i < $car['rating'] ? 'active' : ''; ?>"></i>
+                        <?php endfor; ?>
+                    </div>
+                    <div class="car-features">
+                        <?php 
+                                $features = $car['features'] ? explode(',', $car['features']) : [];
+                                foreach ($features as $feature): ?>
+                        <span><?php echo trim($feature); ?></span>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="car-footer">
+                        <span class="price">$<?php echo number_format($car['price_per_day'], 2); ?>/day</span>
+                        <a href="car.php?id=<?php echo $car['id']; ?>" class="btn-book">Book Now</a>
+                    </div>
                 </div>
             </div>
-        </a>
-    </div>
-    <div class="car-card">
-        <a href="https://www.ethiopiacarrentals.com/shop/">
-            <img src="assets/car3.jpg" alt="frendship addis ababa">
-            <div class="car-hover">
-                <h1>Mercedece G1</h1>
-                <div class="star-rating">
-                    <span class="star" data-value="1">&#9733;</span>
-                    <span class="star" data-value="2">&#9733;</span>
-                    <span class="star" data-value="3">&#9733;</span>
-                    <span class="star" data-value="4">&#9733;</span>
-                    <span class="star" data-value="5">&#9733;</span>
-                </div>
-                <!-- <p id="rating-output">Rating: 0</p> -->
-                <div class="price"><span>240$</span>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="car-card">
-        <a href="https://www.ethiopiacarrentals.com/shop/">
-            <img src="assets/car4.jpg" alt="suzuki">
-            <div class="car-hover">
-                <h1>Suzuki</h1>
-                <div class="star-rating">
-                    <span class="star" data-value="1">&#9733;</span>
-                    <span class="star" data-value="2">&#9733;</span>
-                    <span class="star" data-value="3">&#9733;</span>
-                    <span class="star" data-value="4">&#9733;</span>
-                    <span class="star" data-value="5">&#9733;</span>
-                </div>
-                <!-- <p id="rating-output">Rating: 0</p> -->
-                <div class="price"><span>1000$</span>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="car-card">
-        <a href="https://www.ethiopiacarrentals.com/shop/">
-            <img src="assets/car5.jpg" alt="frendship addis ababa">
-            <div class="car-hover">
-                <h1>Hilux</h1>
-                <div class="star-rating">
-                    <span class="star" data-value="1">&#9733;</span>
-                    <span class="star" data-value="2">&#9733;</span>
-                    <span class="star" data-value="3">&#9733;</span>
-                    <span class="star" data-value="4">&#9733;</span>
-                    <span class="star" data-value="5">&#9733;</span>
-                </div>
-                <!-- <p id="rating-output">Rating: 0</p> -->
-                <div class="price"><span>1000$</span>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="car-card">
-        <a href="https://www.ethiopiacarrentals.com/shop/">
-            <img src="assets/car6.jpg" alt="frendship addis ababa">
-            <div class="car-hover">
-                <h1>Land Crusier</h1>
-                <div class="star-rating">
-                    <span class="star" data-value="1">&#9733;</span>
-                    <span class="star" data-value="2">&#9733;</span>
-                    <span class="star" data-value="3">&#9733;</span>
-                    <span class="star" data-value="4">&#9733;</span>
-                    <span class="star" data-value="5">&#9733;</span>
-                </div>
-                <!-- <p id="rating-output">Rating: 0</p> -->
-                <div class="price"><span>1000$ - </span>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="car-card">
-        <a href="https://www.ethiopiacarrentals.com/shop/">
-            <img src="assets/car7.png" alt="frendship addis ababa">
-            <div class="car-hover">
-                <h1>Hyundai Tuscan</h1>
-                <div class="star-rating">
-                    <span class="star" data-value="1">&#9733;</span>
-                    <span class="star" data-value="2">&#9733;</span>
-                    <span class="star" data-value="3">&#9733;</span>
-                    <span class="star" data-value="4">&#9733;</span>
-                    <span class="star" data-value="5">&#9733;</span>
-                </div>
-                <!-- <p id="rating-output">Rating: 0</p> -->
-                <div class="price"><span>1000$ - </span>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="car-card">
-        <a href="https://www.ethiopiacarrentals.com/shop/">
-            <img src="assets/car8.jpg" alt="frendship addis ababa">
-            <div class="car-hover">
-                <h1>Hiace</h1>
-                <div class="star-rating">
-                    <span class="star" data-value="1">&#9733;</span>
-                    <span class="star" data-value="2">&#9733;</span>
-                    <span class="star" data-value="3">&#9733;</span>
-                    <span class="star" data-value="4">&#9733;</span>
-                    <span class="star" data-value="5">&#9733;</span>
-                </div>
-                <!-- <p id="rating-output">Rating: 0</p> -->
-                <div class="price"><span>1000$ - </span>
-                </div>
-            </div>
-        </a>
+            <?php endforeach; ?>
+        </div>
     </div>
 </section>
 
 <!-- Footer -->
-<div class="footer-container">
-    <div class="keep">
-        <h3>keep in touch</h3>
-        <div class="with-us">
-            <h2>travel with us</h2>
-            <div>
-                <input type="text" size="40" maxlength="400">
-                <input type="submit" value="send">
-            </div>
+<?php include 'footer.php'; ?>
 
-        </div>
-    </div>
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-p">
-                <h4 id="log">Travel Habesha</h4>
-                <p>Discover the best travel spots,
-                    with hassle-free booking and
-                    expert recommendations to make your adventures
-                    unforgettable.
-                </p>
-            </div>
-            <div class="footer-column">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="./packages.html">Packages</li></a>
-                    <li><a href="./hotels.html">Hotels</li></a>
-                    <li><a href="./rentalcar.html">Travel Cars</a></li>
-                    <li><a href="./about.html"> About Us</li></a>
+<script>
+// Filter cars based on selections
+document.getElementById('search-cars').addEventListener('click', function() {
+    const type = document.getElementById('car-type').value;
+    const priceRange = document.getElementById('price-range').value;
+    const [minPrice, maxPrice] = priceRange.split('-').map(Number);
 
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Resources</h4>
-                <ul>
-                    <li>Blog</li>
-                    <li>Privacy Policy</li>
-                    <li>Terms & Conditions</li>
-                    <li>FAQs</li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Last Minute</h4>
-                <ul>
-                    <li>Weekend Deals</li>
-                    <li>Family Packages</li>
-                    <li>Group Discounts</li>
-                    <li>Limited Offers</li>
-                </ul>
-            </div>
+    const cars = document.querySelectorAll('.car-card');
 
-    </footer>
-    <div class="footer-bottom">
-        <p>The Best Travel Platform for Exploring Ethiopia</p>
-        <p>Launched in 2024</p>
-    </div>
-</div>
-</div>
+    cars.forEach(car => {
+        const carType = car.dataset.type;
+        const carPrice = parseFloat(car.dataset.price);
+
+        const show =
+            (type === '' || carType === type) &&
+            (priceRange === '0-1000' || (carPrice >= minPrice && carPrice <= maxPrice));
+
+        car.style.display = show ? 'block' : 'none';
+    });
+});
+</script>
 </body>
 
 </html>
