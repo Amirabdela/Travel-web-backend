@@ -99,6 +99,37 @@ try {
             status TEXT DEFAULT 'unread'
         )
     ");
+    // Add these tables for images
+$pdo->exec("
+    CREATE TABLE IF NOT EXISTS destination_images (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        destination_id INTEGER NOT NULL,
+        image_path TEXT NOT NULL,
+        caption TEXT,
+        is_featured INTEGER DEFAULT 0,
+        FOREIGN KEY (destination_id) REFERENCES destinations(id)
+    )
+");
+
+$pdo->exec("
+    CREATE TABLE IF NOT EXISTS package_images (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        package_id INTEGER NOT NULL,
+        image_path TEXT NOT NULL,
+        caption TEXT,
+        FOREIGN KEY (package_id) REFERENCES packages(id)
+    )
+");
+
+$pdo->exec("
+    CREATE TABLE IF NOT EXISTS hotel_images (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        hotel_id INTEGER NOT NULL,
+        image_path TEXT NOT NULL,
+        caption TEXT,
+        FOREIGN KEY (hotel_id) REFERENCES hotels(id)
+    )
+");
     
     // Create admin user if not exists
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM users WHERE is_admin = 1");
