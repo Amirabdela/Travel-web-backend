@@ -12,7 +12,7 @@ require_once 'includes/auth_functions.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Habesha - Explore Ethiopia's Wonders</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.php">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@500;600;700&family=Sono:wght@400;500&display=swap"
@@ -29,21 +29,6 @@ require_once 'includes/auth_functions.php';
                 <div class="header-utilities">
                     <!-- Left-aligned items -->
                     <div class="top-bar-left">
-                        <div class="language-selector">
-                            <i class="fas fa-globe"></i>
-                            <select aria-label="Language selector">
-                                <option value="en">English</option>
-                                <option value="am">አማርኛ</option>
-                            </select>
-                        </div>
-
-                        <div class="social-links">
-                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
-                        </div>
-
                         <div class="quick-links">
                             <a href="tel:+251911811899" class="phone-link">
                                 <i class="fas fa-phone-alt"></i> +251 911 811 899

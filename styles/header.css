@@ -1,0 +1,449 @@
+/* Header Styles */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #fff;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Top Bar - Ethiopian Flag Colors */
+.top-bar {
+    background: linear-gradient(90deg, #078930 0%, #078930 33%, #fcdd09 33%, #fcdd09 66%, #da121a 66%, #da121a 100%);
+    color: white;
+    padding: 6px 0;
+    font-size: 14px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header-utilities {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Quick Links */
+.quick-links a {
+    color: rgba(255, 255, 255, 0.9);
+    margin-right: 25px;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.quick-links a:hover {
+    color: white;
+    transform: translateY(-1px);
+}
+
+.quick-links i {
+    margin-right: 8px;
+    font-size: 13px;
+}
+
+/* User Section */
+.user-account-section {
+    display: flex;
+    align-items: center;
+}
+
+.auth-links a {
+    color: rgba(255, 255, 255, 0.9);
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.auth-links a:hover {
+    color: white;
+    transform: translateY(-1px);
+}
+
+.auth-links i {
+    margin-right: 6px;
+}
+
+/* Main Navigation */
+.main-navigation {
+    padding: 12px 0;
+    background: white;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo with Ethiopian Motif */
+.logo {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-left: 50px;
+}
+
+.logo::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%23da121a"/><circle cx="50" cy="50" r="30" fill="%23fcdd09"/><circle cx="50" cy="50" r="20" fill="%23078930"/><circle cx="50" cy="50" r="10" fill="%232c3e50"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.logo-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: #2c3e50;
+    line-height: 1;
+    letter-spacing: 1px;
+}
+
+.logo-highlight {
+    color: #da121a; /* Ethiopian red */
+    position: relative;
+}
+
+.logo-highlight::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #fcdd09; /* Ethiopian yellow */
+}
+
+.logo-tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    color: #7f8c8d;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-top: 3px;
+}
+
+/* Navigation Menu */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.nav-item {
+    position: relative;
+    margin-left: 20px;
+}
+
+.nav-link {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.nav-link:hover {
+    color: #da121a;
+    background: rgba(218, 18, 26, 0.05);
+}
+
+.nav-link i {
+    margin-left: 6px;
+    font-size: 12px;
+}
+
+/* Active State */
+.nav-item.active .nav-link {
+    color: #078930; /* Ethiopian green */
+    font-weight: 700;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    min-width: 220px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 1000;
+    border-top: 3px solid #da121a;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(5px);
+}
+
+.dropdown-menu li {
+    padding: 0;
+}
+
+.dropdown-menu a {
+    color: #34495e;
+    padding: 10px 20px;
+    display: block;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.dropdown-menu a:hover {
+    background: rgba(218, 18, 26, 0.05);
+    color: #da121a;
+    padding-left: 25px;
+}
+
+/* User Dropdown */
+.user-menu-dropdown {
+    position: relative;
+}
+
+.user-avatar {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.user-avatar:hover {
+    transform: translateY(-1px);
+}
+
+.user-avatar img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.user-avatar span {
+    margin-right: 8px;
+    font-weight: 500;
+}
+
+.user-dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: white;
+    min-width: 200px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 1000;
+    border-top: 3px solid #078930;
+}
+
+.user-menu-dropdown:hover .user-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(5px);
+}
+
+.user-dropdown-menu a {
+    color: #34495e;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.user-dropdown-menu a:hover {
+    background: rgba(218, 18, 26, 0.05);
+    color: #da121a;
+    padding-left: 25px;
+}
+
+.user-dropdown-menu i {
+    margin-right: 10px;
+    width: 16px;
+    text-align: center;
+    color: #7f8c8d;
+}
+
+/* Book Now Button */
+.book-now .btn-primary {
+    background: linear-gradient(135deg, #da121a 0%, #078930 100%);
+    color: white;
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(218, 18, 26, 0.3);
+    border: none;
+}
+
+.book-now .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(218, 18, 26, 0.4);
+}
+
+.book-now .btn-primary i {
+    margin-right: 8px;
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    z-index: 1001;
+}
+
+.menu-icon {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: #2c3e50;
+    margin: 5px 0;
+    transition: all 0.3s;
+    border-radius: 2px;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .mobile-menu-toggle.active .menu-icon:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    
+    .mobile-menu-toggle.active .menu-icon:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .mobile-menu-toggle.active .menu-icon:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 280px;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 80px 30px 30px;
+        box-shadow: 5px 0 30px rgba(0, 0, 0, 0.1);
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+        z-index: 1000;
+    }
+    
+    .nav-menu.active {
+        transform: translateX(0);
+    }
+    
+    .nav-item {
+        margin: 15px 0;
+        width: 100%;
+    }
+    
+    .nav-link {
+        padding: 12px 0;
+    }
+    
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        opacity: 1;
+        visibility: visible;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s;
+        padding: 0;
+        margin-left: 15px;
+    }
+    
+    .dropdown-menu.show {
+        max-height: 500px;
+        padding: 10px 0;
+    }
+    
+    .dropdown-menu a {
+        padding-left: 15px;
+    }
+    
+    .user-dropdown-menu {
+        right: 15px;
+    }
+    
+    .book-now {
+        margin-top: 20px;
+        width: 100%;
+    }
+    
+    .book-now .btn-primary {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-bar {
+        font-size: 12px;
+    }
+    
+    .quick-links a {
+        margin-right: 15px;
+    }
+    
+    .auth-links a {
+        margin-left: 15px;
+    }
+    
+    .logo-text {
+        font-size: 24px;
+    }
+    
+    .logo::before {
+        width: 32px;
+        height: 32px;
+    }
+}
