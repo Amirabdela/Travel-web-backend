@@ -35,65 +35,42 @@ $difficulties = $stmt->fetchAll(PDO::FETCH_COLUMN);
         rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<!-- Header Section -->
-<header>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <!-- Share Icon -->
-        <div class="con">
-            <div class="socials">
-                <i class="fa-solid fa-earth-africa"></i><span class="lang">LANGUAGESENES</span>
-                <i class="fa-solid fa-share-nodes"></i><span class="lang">OUR SOCIALS</span>
-                <i class="fa-brands fa-facebook-f"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-twitter"></i>
-                <i class="fa-brands fa-pinterest-p"></i>
-            </div>
-            <div class="right-links">
-                <a class="fav" href="#"><i class="fa-regular fa-star"></i>TOUR PACKAGES</a>
-                <a class="contact" href="#"><i class="fa-solid fa-location-dot"></i>CONTACT US</a>
-            </div>
-        </div>
 
-    </div>
+<body>
+    <!-- Header Section -->
 
-    <!-- Navigation -->
-    <div class="nav-bar">
-        <nav>
-            <div class="logo">
-                <strong>TRAVEL HABESHA.</strong>
-                <i class="small-block fas fa-bars menu-icon"></i>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-all">
+            <div class="hero-padding">
+                <span id="our">OUR PACKAGES</span>
+                <h2>Search your Holiday</h2>
             </div>
-            <ul>
-                <li class="nav-links"><a href="/index.php">Home</a></li>
-                <li class="nav-links"><a href="../Travel-web-backend/packages.php">Packages</a></li>
-                <li class="nav-links"><a href="../Travel-web-backend/shop.php">Shop</a></li>
-                <li class="nav-links"><a href="../Travel-web-backend/rentalcar.php">Travel Cars</a></li>
-                <li class="nav-links"><a href="../Travel-web-backend/about.php">About Us</a></li>
-                <li class="nav-links"><a href="../Travel-web-backend/hotels.php">Hotels</a></li>
-                <li class="book-now"><a href="../Travel-web-backend/book.php">Book Now</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-<!-- Hero Section -->
-<section class="hero">
-    <div class="hero-all">
-        <div class="hero-padding"><span id="our">OUR PACKAGES</span>
-            <h2>Search your Holiday</h2>
-        </div>
-        <div class="search">
-            <div class="search-form">
-                <!-- Destination Dropdown -->
-                <div class="form-group">
-                    <label for="destination">Select Your Destination:</label>
-                    <select id="destination">
-                        <option>All Destinations</option>
-                        <option>Paris</option>
-                        <option>New York</option>
-                        <option>Tokyo</option>
-                    </select>
-                </div>
+            <div class="search">
+                <div class="search-form">
+                    <!-- Destination Dropdown -->
+                    <div class="form-group">
+                        <label for="destination">Select Your Destination:</label>
+                        <select id="destination">
+                            <option value="">All Destinations</option>
+                            <?php 
+                            $stmt = $pdo->query("SELECT id, name FROM destinations");
+                            while ($row = $stmt->fetch()): ?>
+                            <option value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?></option>
+                            <?php endwhile; ?>
+                        </select>
+                    </div>
+
+                    <!-- Package Type Dropdown -->
+                    <div class="form-group">
+                        <label for="type">Package Type:</label>
+                        <select id="type">
+                            <option value="">All Types</option>
+                            <?php foreach ($types as $type): ?>
+                            <option value="<?php echo $type; ?>"><?php echo ucfirst($type); ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
 
                     <!-- Difficulty Dropdown -->
                     <div class="form-group">
@@ -263,4 +240,3 @@ $difficulties = $stmt->fetchAll(PDO::FETCH_COLUMN);
 </body>
 
 </html>
-g
