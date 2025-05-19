@@ -52,8 +52,9 @@ require_once __DIR__ . '/includes/header.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $destination['name']; ?> - Travel Habesha</title>
-    <link rel="stylesheet" href="/styles/destination.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="styles/destination.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/index.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&family=Sono&display=swap"

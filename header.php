@@ -126,29 +126,20 @@ require_once 'includes/auth_functions.php';
             navMenu.classList.toggle('active');
         });
 
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!navMenu.contains(e.target) && e.target !== mobileMenuToggle) {
-                mobileMenuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-            }
-        });
-
-        // Dropdown functionality for mobile
-        const dropdownToggles = document.querySelectorAll('.dropdown > .nav-link');
+        // Dropdown Menus for Mobile
+        const dropdownToggles = document.querySelectorAll('.nav-item.dropdown > .nav-link');
 
         dropdownToggles.forEach(toggle => {
             toggle.addEventListener('click', function(e) {
                 if (window.innerWidth <= 992) {
                     e.preventDefault();
-                    const dropdown = this.parentElement;
-                    const menu = dropdown.querySelector('.dropdown-menu');
-                    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+                    const parent = this.parentElement;
+                    parent.classList.toggle('active');
                 }
             });
         });
 
-        // User dropdown in top bar
+        // User Dropdown
         const userDropdownToggle = document.querySelector('.user-menu-dropdown > .user-avatar');
         if (userDropdownToggle) {
             userDropdownToggle.addEventListener('click', function(e) {
@@ -157,25 +148,107 @@ require_once 'includes/auth_functions.php';
                 const menu = dropdown.querySelector('.user-dropdown-menu');
                 menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
             });
+        }
 
-            // Close user dropdown when clicking outside
-            document.addEventListener('click', function(e) {
-                const userDropdown = document.querySelector('.user-menu-dropdown');
-                if (userDropdown && !userDropdown.contains(e.target)) {
-                    const menu = userDropdown.querySelector('.user-dropdown-menu');
-                    menu.style.display = 'none';
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            // Close mobile menu
+            if (!navMenu.contains(e.target)) {
+                mobileMenuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+
+            // Close user dropdown
+            const userDropdown = document.querySelector('.user-menu-dropdown');
+            if (userDropdown && !userDropdown.contains(e.target)) {
+                const menu = userDropdown.querySelector('.user-dropdown-menu');
+                menu.style.display = 'none';
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    mobileMenuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
                 }
+            });
+        });
+
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll(
+                '.destination-card, .package-card, .offer-card, .stat-item');
+
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementPosition < windowHeight - 100) {
+                    element.classList.add('animate__animated', 'animate__fadeInUp');
+                }
+            });
+        };
+
+        // Run once on load
+        animateOnScroll();
+
+        // Run on scroll
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Hero image parallax effect
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.pageYOffset;
+                hero.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
             });
         }
 
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 992) {
-                const dropdownMenus = document.querySelectorAll('.dropdown-menu');
-                dropdownMenus.forEach(menu => {
-                    menu.style.display = '';
+        // Stats counter animation
+        const statNumbers = document.querySelectorAll('.stat-number');
+        if (statNumbers.length > 0) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        statNumbers.forEach(number => {
+                            const target = parseInt(number.textContent);
+                            const duration = 2000;
+                            const start = 0;
+                            const increment = target / (duration / 16);
+
+                            let current = start;
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= target) {
+                                    clearInterval(timer);
+                                    current = target;
+                                }
+                                number.textContent = Math.floor(
+                                    current);
+                            }, 16);
+                        });
+                        observer.disconnect();
+                    }
                 });
-            }
-        });
+            }, {
+                threshold: 0.5
+            });
+
+            observer.observe(document.querySelector('.stats-section'));
+        }
     });
     </script>

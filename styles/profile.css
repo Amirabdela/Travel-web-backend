@@ -1,0 +1,315 @@
+/* profile.css */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f6f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.alert.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.form-group input[type="text"]:disabled,
+.form-group input[type="email"]:disabled {
+    background-color: #eee;
+    cursor: not-allowed;
+}
+
+.error {
+    color: #dc3545;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: block;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Profile Sidebar */
+.profile-sidebar {
+    background: white;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #e0f7fa;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5em;
+    color: #00acc1;
+    overflow: hidden;
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-sidebar h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.profile-sidebar p {
+    color: #777;
+    margin-bottom: 8px;
+    font-size: 0.95em;
+}
+
+.profile-sidebar i {
+    margin-right: 5px;
+}
+
+/* Profile Content */
+.profile-content {
+    background: white;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.profile-content h1 {
+    font-size: 2em;
+    margin-bottom: 25px;
+    color: #2c3e50;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+}
+
+.profile-content h3 {
+    font-size: 1.3em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #34495e;
+}
+
+.profile-form {
+    margin-bottom: 30px;
+}
+
+/* My Bookings */
+.profile-content h2 {
+    font-size: 1.8em;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+}
+
+.booking-card {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    align-items: center;
+}
+
+.booking-card:last-child {
+    border-bottom: none;
+}
+
+.booking-image {
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 4px;
+    background: #f9f9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    color: #999;
+}
+
+.booking-details h3 {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.booking-details h3 small {
+    color: #777;
+    font-weight: normal;
+    margin-left: 5px;
+}
+
+.booking-details p {
+    color: #555;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.booking-details p i {
+    margin-right: 5px;
+}
+
+.status-pending {
+    color: #e67e22;
+    font-weight: bold;
+}
+
+.status-confirmed {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.status-cancelled {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .profile-container {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-sidebar {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-content h1 {
+        font-size: 1.8em;
+    }
+
+    .profile-content h2 {
+        font-size: 1.6em;
+    }
+
+    .booking-card {
+        grid-template-columns: 80px 1fr;
+        gap: 15px;
+    }
+
+    .booking-image {
+        width: 80px;
+        height: 55px;
+        font-size: 1.2em;
+    }
+
+    .booking-details h3 {
+        font-size: 1em;
+    }
+
+    .form-group label {
+        font-size: 0.9em;
+    }
+
+    .form-group input {
+        font-size: 0.9em;
+    }
+
+    .btn-primary {
+        font-size: 0.9em;
+        padding: 10px 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+        font-size: 2em;
+    }
+
+    .profile-sidebar h2 {
+        font-size: 1.3em;
+    }
+
+    .profile-sidebar p {
+        font-size: 0.85em;
+    }
+
+    .booking-card {
+        grid-template-columns: 60px 1fr;
+        gap: 10px;
+    }
+
+    .booking-image {
+        width: 60px;
+        height: 40px;
+        font-size: 1em;
+    }
+
+    .booking-details h3 {
+        font-size: 0.9em;
+    }
+
+    .booking-details p {
+        font-size: 0.8em;
+    }
+}

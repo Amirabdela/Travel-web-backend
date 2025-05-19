@@ -168,3 +168,8 @@ VALUES
 (3, 'assets/destinations/danakil1.jpg', 'Erta Ale Volcano', 1),
 (3, 'assets/destinations/danakil2.jpg', 'Dallol Sulfur Springs', 0),
 (3, 'assets/destinations/danakil3.jpg', 'Salt Flats', 0);
+
+select * from contact_messages
+
+
+select * from users
