@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_profile'])) {
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .profile-content {
+    <<<<<<< HEAD=======>>>>>>>4f0b3816c00d5e965c55d41baf118158924b2308 .profile-content {
         background: white;
         border-radius: 8px;
         padding: 20px;
