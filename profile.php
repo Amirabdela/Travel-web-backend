@@ -126,7 +126,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_profile'])) {
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
+<<<<<<< HEAD
     <<<<<<< HEAD=======>>>>>>>4f0b3816c00d5e965c55d41baf118158924b2308 .profile-content {
+=======
+
+    .profile-content {
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
         background: white;
         border-radius: 8px;
         padding: 20px;
@@ -251,6 +256,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_profile'])) {
                     <?php endif; ?>
                 </div>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
                 <div class="form-group">
                     <label for="confirm_password">Confirm New Password</label>
                     <input type="password" id="confirm_password" name="confirm_password">

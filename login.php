@@ -2,9 +2,12 @@
 session_start();
 require_once 'connect.php';
 
+<<<<<<< HEAD
 require_once __DIR__ . '/includes/header.php';
 
 
+=======
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
 // Handle login if form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     $username = trim($_POST['username']);
@@ -46,13 +49,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Travel Habesha</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="styles/auth.css">
 
+=======
+    <link rel="stylesheet" href="index.css">
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
     <header>
+<<<<<<< HEAD
+=======
+        <?php include 'header.php'; ?>
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
     </header>
 
     <section class="auth-section">

@@ -42,9 +42,13 @@ $similarCars = $stmt->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $car['model']; ?> - Travel Habesha</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="styles/index.css">
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/cars.css">
+=======
+    <link rel="stylesheet" href="index.css">
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&family=Sono&display=swap"
         rel="stylesheet">

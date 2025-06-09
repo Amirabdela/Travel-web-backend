@@ -65,6 +65,10 @@ function logoutUser() {
 
 function getUserAvatar($userId) {
     // Default avatar if none set
+<<<<<<< HEAD
     return 'https://images.unsplash.com/photo-1602471615287-d733c59b79c4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHByb2ZpbGUlMjBwaWN0dXJlfGVufDB8fDB8fHww';
+=======
+    return 'images/default-avatar.jpg';
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
 }
 ?>

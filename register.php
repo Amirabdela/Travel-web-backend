@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 require_once __DIR__ . '/includes/auth_functions.php';
 startSecureSession();
@@ -67,6 +68,9 @@ if (isLoggedIn()) {
 }
 ?>
 
+=======
+<?php require_once 'connect.php'; ?>
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,17 +78,26 @@ if (isLoggedIn()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Travel Habesha</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="styles/auth.css">
+=======
+    <link rel="stylesheet" href="styles.css">
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
+<<<<<<< HEAD
 
+=======
+    <?php include 'header.php'; ?>
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
 
     <section class="auth-section">
         <div class="auth-container">
             <h2>Create an Account</h2>
 
+<<<<<<< HEAD
             <?php if (!empty($errors['general'])): ?>
             <div class="error-message"><?php echo $errors['general']; ?></div>
             <?php endif; ?>
@@ -99,11 +112,22 @@ if (isLoggedIn()) {
                     <?php if (!empty($errors['username'])): ?>
                     <span class="error"><?php echo $errors['username']; ?></span>
                     <?php endif; ?>
+=======
+            <?php if (isset($_SESSION['error'])): ?>
+            <div class="alert alert-error"><?php echo $_SESSION['error']; unset($_SESSION['error']); ?></div>
+            <?php endif; ?>
+
+            <form action="auth.php" method="post">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" required>
+<<<<<<< HEAD
                     <?php if (!empty($errors['email'])): ?>
                     <span class="error"><?php echo $errors['email']; ?></span>
                     <?php endif; ?>
@@ -123,11 +147,17 @@ if (isLoggedIn()) {
                     <?php if (!empty($errors['confirm_password'])): ?>
                     <span class="error"><?php echo $errors['confirm_password']; ?></span>
                     <?php endif; ?>
+=======
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
                 </div>
 
                 <div class="form-group">
                     <label for="full_name">Full Name</label>
+<<<<<<< HEAD
                     <input type="text" id="full_name" name="full_name">
+=======
+                    <input type="text" id="full_name" name="full_name" required>
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
                 </div>
 
                 <div class="form-group">
@@ -135,6 +165,7 @@ if (isLoggedIn()) {
                     <input type="tel" id="phone" name="phone">
                 </div>
 
+<<<<<<< HEAD
                 <button type="submit" class="btn-primary">Register</button>
             </form>
             <?php endif; ?>
@@ -146,6 +177,28 @@ if (isLoggedIn()) {
     </section>
 
 
+=======
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" id="confirm_password" name="confirm_password" required>
+                </div>
+
+                <button type="submit" name="register" class="btn btn-primary">Register</button>
+
+                <div class="auth-links">
+                    <p>Already have an account? <a href="login.php">Login here</a></p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <?php include 'footer.php'; ?>
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
 </body>
 
 </html>

@@ -17,10 +17,14 @@ $hotels = $stmt->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotels - Travel Habesha</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="styles/index.css">
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/destination.css">
 
+=======
+    <link rel="stylesheet" href="index.css">
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
     <link rel="stylesheet" href="styles/hotels.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +38,11 @@ $hotels = $stmt->fetchAll();
 
 
     <!-- Hero Section -->
+<<<<<<< HEAD
     <section class="hotels-hero best-hotel-hero">
+=======
+    <section class="hotels-hero">
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
         <h1>Hotels & Accommodations</h1>
         <p>Find the perfect place to stay for your trip</p>
     </section>

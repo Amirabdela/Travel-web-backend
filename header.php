@@ -12,7 +12,11 @@ require_once 'includes/auth_functions.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Habesha - Explore Ethiopia's Wonders</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="styles/header-footer.css">
+=======
+    <link rel="stylesheet" href="index.css">
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@500;600;700&family=Sono:wght@400;500&display=swap"
@@ -29,6 +33,24 @@ require_once 'includes/auth_functions.php';
                 <div class="header-utilities">
                     <!-- Left-aligned items -->
                     <div class="top-bar-left">
+<<<<<<< HEAD
+=======
+                        <div class="language-selector">
+                            <i class="fas fa-globe"></i>
+                            <select aria-label="Language selector">
+                                <option value="en">English</option>
+                                <option value="am">አማርኛ</option>
+                            </select>
+                        </div>
+
+                        <div class="social-links">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        </div>
+
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
                         <div class="quick-links">
                             <a href="tel:+251911811899" class="phone-link">
                                 <i class="fas fa-phone-alt"></i> +251 911 811 899
@@ -126,20 +148,43 @@ require_once 'includes/auth_functions.php';
             navMenu.classList.toggle('active');
         });
 
+<<<<<<< HEAD
         // Dropdown Menus for Mobile
         const dropdownToggles = document.querySelectorAll('.nav-item.dropdown > .nav-link');
+=======
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!navMenu.contains(e.target) && e.target !== mobileMenuToggle) {
+                mobileMenuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Dropdown functionality for mobile
+        const dropdownToggles = document.querySelectorAll('.dropdown > .nav-link');
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
 
         dropdownToggles.forEach(toggle => {
             toggle.addEventListener('click', function(e) {
                 if (window.innerWidth <= 992) {
                     e.preventDefault();
+<<<<<<< HEAD
                     const parent = this.parentElement;
                     parent.classList.toggle('active');
+=======
+                    const dropdown = this.parentElement;
+                    const menu = dropdown.querySelector('.dropdown-menu');
+                    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
                 }
             });
         });
 
+<<<<<<< HEAD
         // User Dropdown
+=======
+        // User dropdown in top bar
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
         const userDropdownToggle = document.querySelector('.user-menu-dropdown > .user-avatar');
         if (userDropdownToggle) {
             userDropdownToggle.addEventListener('click', function(e) {
@@ -148,6 +193,7 @@ require_once 'includes/auth_functions.php';
                 const menu = dropdown.querySelector('.user-dropdown-menu');
                 menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
             });
+<<<<<<< HEAD
         }
 
 
@@ -250,5 +296,27 @@ require_once 'includes/auth_functions.php';
 
             observer.observe(document.querySelector('.stats-section'));
         }
+=======
+
+            // Close user dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                const userDropdown = document.querySelector('.user-menu-dropdown');
+                if (userDropdown && !userDropdown.contains(e.target)) {
+                    const menu = userDropdown.querySelector('.user-dropdown-menu');
+                    menu.style.display = 'none';
+                }
+            });
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 992) {
+                const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+                dropdownMenus.forEach(menu => {
+                    menu.style.display = '';
+                });
+            }
+        });
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
     });
     </script>

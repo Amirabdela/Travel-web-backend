@@ -167,9 +167,13 @@ INSERT INTO destination_images (destination_id, image_path, caption, is_featured
 VALUES 
 (3, 'assets/destinations/danakil1.jpg', 'Erta Ale Volcano', 1),
 (3, 'assets/destinations/danakil2.jpg', 'Dallol Sulfur Springs', 0),
+<<<<<<< HEAD
 (3, 'assets/destinations/danakil3.jpg', 'Salt Flats', 0);
 
 select * from contact_messages
 
 
 select * from users
+=======
+(3, 'assets/destinations/danakil3.jpg', 'Salt Flats', 0);
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51

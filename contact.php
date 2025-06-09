@@ -73,8 +73,12 @@ if (isLoggedIn()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Travel Habesha</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/index.css">
+=======
+    <link rel="stylesheet" href="index.css">
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
     <link rel="stylesheet" href="styles/contact.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>

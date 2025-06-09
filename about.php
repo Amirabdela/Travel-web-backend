@@ -3,7 +3,11 @@ require_once __DIR__ . '/includes/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 
+=======
+<!-- about pag -->
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,6 +62,10 @@ require_once __DIR__ . '/includes/header.php';
         </div>
     </section>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
     <section class="our-values">
         <div class="container">
             <h3>Our Core Values</h3>
@@ -113,7 +121,11 @@ require_once __DIR__ . '/includes/header.php';
             </div>
         </div>
     </section>
+<<<<<<< HEAD
 
+=======
+//conact us part
+>>>>>>> 13a686bc9ac501ba73114b0c410598bdac9afd51
     <section class="contact-us-about">
         <div class="container">
             <h3>Ready to Explore with Us?</h3>
