@@ -1,0 +1,260 @@
+ /* Ensure these variables are defined in a shared CSS file, e.g., your header.css or a global variables.css */
+/* :root {
+    --primary-color: #007bff;
+    --primary-hover-color: #0056b3;
+    --secondary-color: #6c757d;
+    --accent-color: #ffc107;
+    --text-color-dark: #333;
+    --text-color-light: #f8f9fa;
+    --background-light: #ffffff;
+    --background-dark: #343a40;
+    --border-color: #dee2e6;
+    --font-poppins: 'Poppins', sans-serif;
+    --font-montserrat: 'Montserrat', sans-serif;
+    --font-sono: 'Sono', sans-serif;
+} */
+
+/* Footer Base Styles */
+.site-footer {
+    background-color: var(--background-dark); /* Dark background for footer */
+    color: var(--text-color-light);
+    padding: 60px 0 20px; /* Top padding, bottom padding for copyright */
+    font-size: 0.95em;
+    border-top: 5px solid var(--primary-color); /* A nice accent border */
+}
+
+.site-footer a {
+    color: var(--text-color-light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.site-footer a:hover {
+    color: var(--accent-color); /* Highlight on hover */
+}
+
+/* Footer Content Sections Layout */
+.footer-content {
+    display: flex;
+    flex-wrap: wrap; /* Allow sections to wrap on smaller screens */
+    justify-content: space-between;
+    gap: 30px; /* Space between columns */
+    margin-bottom: 40px; /* Space before the bottom section */
+}
+
+.footer-section {
+    flex: 1; /* Allow sections to grow and shrink */
+    min-width: 250px; /* Minimum width before wrapping */
+    padding: 0 15px; /* Padding inside each section */
+}
+
+.footer-section h3 {
+    font-family: var(--font-montserrat);
+    font-size: 1.25em;
+    color: var(--accent-color); /* Section titles in accent color */
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px; /* Space for underline effect */
+}
+
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px; /* Short underline */
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.footer-section p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+/* Social Links (reusing some header styles, but specific for footer) */
+.footer-section .social-links {
+    display: flex;
+    margin-top: 20px;
+}
+
+.footer-section .social-links a {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+    color: var(--text-color-light);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Circular buttons */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
+    margin-right: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-section .social-links a:hover {
+    background-color: var(--primary-color); /* Change background on hover */
+    color: var(--text-color-light);
+    transform: translateY(-3px); /* Pop up slightly */
+}
+
+/* Quick Links & Contact Info */
+.footer-section ul {
+    padding-left: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li i {
+    margin-right: 8px;
+    color: var(--primary-color); /* Icon color */
+}
+
+.footer-section ul li a {
+    display: flex; /* For aligning icon and text */
+    align-items: center;
+}
+.footer-section ul li a:hover {
+    text-decoration: underline; /* Add underline for quick links on hover */
+}
+
+
+/* Newsletter Form */
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.newsletter-form input[type="email"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.05); /* Slightly transparent input */
+    color: var(--text-color-light);
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.newsletter-form input[type="email"]::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.newsletter-form input[type="email"]:focus {
+    border-color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.newsletter-form .btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.newsletter-form .btn-primary:hover {
+    background-color: var(--primary-hover-color);
+    transform: translateY(-2px);
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85em;
+}
+
+.footer-bottom p {
+    margin-bottom: 0;
+}
+
+.footer-bottom .footer-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-left: auto; /* Push links to the right */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .footer-content {
+        flex-direction: column; /* Stack sections vertically */
+        align-items: center; /* Center them */
+    }
+
+    .footer-section {
+        width: 100%; /* Full width for stacked sections */
+        max-width: 400px; /* Optional: Limit width on larger screens even when stacked */
+        text-align: center; /* Center text within sections */
+    }
+
+    .footer-section h3::after {
+        left: 50%; /* Center the underline */
+        transform: translateX(-50%);
+    }
+
+    .footer-section .social-links,
+    .footer-section ul,
+    .newsletter-form {
+        justify-content: center;
+        text-align: left; /* Keep text aligned left for lists/forms */
+    }
+    
+    .footer-section ul li a {
+        justify-content: center; /* Center icon and text for quick links */
+    }
+    .footer-section .contact-info li {
+        justify-content: center; /* Center contact info */
+    }
+
+    .footer-bottom {
+        flex-direction: column; /* Stack copyright and links */
+        text-align: center;
+    }
+
+    .footer-bottom p {
+        margin-bottom: 15px; /* Space between stacked items */
+    }
+
+    .footer-bottom .footer-links {
+        margin-left: 0; /* Remove auto margin */
+        justify-content: center; /* Center bottom links */
+    }
+}
+
+@media (max-width: 576px) {
+    .site-footer {
+        padding: 40px 0 15px; /* Reduce padding for smaller screens */
+    }
+    .footer-content {
+        gap: 25px; /* Adjust gap */
+        margin-bottom: 30px;
+    }
+    .footer-section h3 {
+        font-size: 1.15em;
+        margin-bottom: 15px;
+    }
+    .footer-section {
+        padding: 0 10px;
+    }
+    .footer-bottom {
+        font-size: 0.8em;
+    }
+    .footer-bottom .footer-links {
+        gap: 10px; /* Reduce gap for bottom links */
+    }
+}

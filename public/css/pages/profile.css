@@ -1,0 +1,388 @@
+/* Profile Page Specific Styles */
+
+/* Main layout of the profile page */
+.profile-container {
+    display: grid;
+    grid-template-columns: 300px 1fr; /* Sidebar fixed width, content takes rest */
+    gap: 30px; /* Space between sidebar and main content */
+    padding: 40px 20px; /* Top/bottom padding for the whole container */
+    max-width: 1200px;
+    margin: 40px auto; /* Center the container with more vertical margin */
+    background-color: var(--light-grey); /* Light background for the overall section */
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); /* Subtle shadow for the main container */
+}
+
+/* Sidebar Styling */
+.profile-sidebar {
+    background: var(--white); /* White background for the sidebar */
+    border-radius: 8px;
+    padding: 30px; /* More padding for a cleaner look */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Lighter shadow */
+    text-align: center;
+    display: flex; /* Use flexbox for vertical alignment */
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    gap: 15px; /* Space between elements in sidebar */
+}
+
+.profile-avatar {
+    width: 120px; /* Slightly smaller avatar */
+    height: 120px;
+    border-radius: 50%;
+    background: var(--primary-color-light); /* Lighter primary color for avatar background */
+    margin: 0 auto 15px; /* Adjust margin */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5em; /* Larger initial for better visibility */
+    color: var(--primary-color); /* Primary color for the initial */
+    font-weight: 700;
+    border: 3px solid var(--primary-color); /* Add a border */
+}
+
+.profile-sidebar h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    color: var(--dark-grey);
+    margin-bottom: 5px; /* Closer to the email */
+    font-weight: 600;
+}
+
+.profile-sidebar p {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+}
+
+.profile-sidebar p i {
+    color: var(--primary-color); /* Icons in primary color */
+}
+
+/* Profile Content Area */
+.profile-content {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 30px; /* More padding */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.profile-content h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    color: var(--dark-grey);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.profile-content h2 { /* For "My Bookings" heading */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2rem;
+    color: var(--dark-grey);
+    margin-top: 50px; /* More space above this heading */
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Alert Messages */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.alert.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Form Styling */
+.profile-form h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    color: var(--dark-grey);
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--dark-grey);
+    font-size: 1rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box; /* Include padding in width */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group input[type="password"]:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Subtle focus highlight */
+}
+
+.form-group .error {
+    color: #dc3545; /* Red for errors */
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: block;
+}
+
+.btn-primary {
+    display: inline-block; /* Changed to inline-block for better control if needed */
+    width: auto; /* Adjust width based on content */
+    padding: 12px 25px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px; /* Space above button */
+    text-decoration: none; /* For the "Browse Packages" link */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px);
+}
+
+/* My Bookings Section */
+.profile-content > p { /* For "You haven't made any bookings yet." */
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.booking-card {
+    display: grid;
+    grid-template-columns: 120px 1fr; /* Image fixed width, details take rest */
+    gap: 20px;
+    margin-bottom: 25px; /* More space between cards */
+    border-bottom: 1px solid #eee;
+    padding-bottom: 25px;
+    align-items: center; /* Vertically align image and content */
+}
+
+.booking-card:last-child {
+    border-bottom: none;
+}
+
+.booking-image {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.booking-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    color: var(--dark-grey);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.booking-card h3 small {
+    font-size: 0.85em;
+    color: #777;
+    font-weight: 400;
+}
+
+.booking-card p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.booking-card p i {
+    color: var(--secondary-color); /* Icon color for booking details */
+    font-size: 0.9em;
+}
+
+/* Booking Status Colors */
+.status-pending {
+    color: #f39c12; /* Orange */
+    font-weight: 600;
+}
+
+.status-confirmed {
+    color: #27ae60; /* Green */
+    font-weight: 600;
+}
+
+.status-cancelled {
+    color: #e74c3c; /* Red */
+    font-weight: 600;
+}
+
+/* Icon for status (circle) */
+.status-pending i,
+.status-confirmed i,
+.status-cancelled i {
+    font-size: 0.7em;
+    vertical-align: middle;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .profile-container {
+        grid-template-columns: 1fr; /* Stack sidebar and content */
+        padding: 30px 20px;
+    }
+
+    .profile-sidebar {
+        padding: 25px;
+        margin-bottom: 20px; /* Space when stacked */
+    }
+
+    .profile-sidebar h2 {
+        font-size: 1.6rem;
+    }
+
+    .profile-content {
+        padding: 25px;
+    }
+
+    .profile-content h1,
+    .profile-content h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 20px 15px;
+        margin: 20px auto;
+    }
+
+    .profile-sidebar {
+        padding: 20px;
+    }
+
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+        font-size: 3em;
+    }
+
+    .profile-sidebar h2 {
+        font-size: 1.5rem;
+    }
+
+    .profile-sidebar p {
+        font-size: 0.9rem;
+    }
+
+    .profile-content h1,
+    .profile-content h2 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+
+    .profile-form h3 {
+        font-size: 1.3rem;
+    }
+
+    .booking-card {
+        grid-template-columns: 90px 1fr; /* Smaller image on mobile */
+        gap: 15px;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+    }
+
+    .booking-image {
+        width: 90px;
+        height: 60px;
+    }
+
+    .booking-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .booking-card p {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-container {
+        padding: 15px;
+        margin: 15px auto;
+    }
+
+    .profile-sidebar {
+        padding: 15px;
+    }
+
+    .profile-avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 2.5em;
+    }
+
+    .profile-sidebar h2 {
+        font-size: 1.3rem;
+    }
+
+    .profile-sidebar p {
+        font-size: 0.8rem;
+    }
+
+    .profile-content h1,
+    .profile-content h2 {
+        font-size: 1.6rem;
+    }
+
+    .btn-primary {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+
+    .form-group label,
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.9rem;
+    }
+}
