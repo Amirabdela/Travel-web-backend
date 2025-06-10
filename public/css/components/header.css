@@ -1,0 +1,517 @@
+/* Variables for easier theme management */
+:root {
+    --primary-color: #007bff; /* A vibrant blue for main actions */
+    --primary-hover-color: #0056b3;
+    --secondary-color: #6c757d; /* Grey for subtle elements */
+    --accent-color: #ffc107; /* Yellow for highlights */
+    --text-color-dark: #333;
+    --text-color-light: #f8f9fa;
+    --background-light: #ffffff;
+    --background-dark: #343a40; /* Dark for top bar */
+    --border-color: #dee2e6;
+    --font-poppins: 'Poppins', sans-serif;
+    --font-montserrat: 'Montserrat', sans-serif;
+    --font-sono: 'Sono', sans-serif;
+}
+
+/* Base Styles & Resets */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-poppins);
+    line-height: 1.6;
+    color: var(--text-color-dark);
+    background-color: var(--background-light);
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+a:hover {
+    color: var(--primary-hover-color);
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px; /* Add some padding on smaller screens */
+}
+
+/* Header Specific Styles */
+.site-header {
+    width: 100%;
+    background-color: var(--background-light);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative; /* Needed for z-index context if using fixed header */
+    z-index: 1000;
+}
+
+/* Top Bar Styles */
+.top-bar {
+    background-color: var(--background-dark);
+    color: var(--text-color-light);
+    padding: 8px 0;
+    font-size: 0.85em;
+}
+
+.top-bar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.top-bar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Take full width within container */
+}
+
+.top-bar-left,
+.top-bar-right {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.language-selector,
+.contact-info,
+.social-links,
+.auth-links {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Space between groups */
+}
+
+.language-selector i,
+.contact-info i {
+    margin-right: 5px;
+    color: var(--accent-color);
+}
+
+.language-selector select {
+    background-color: transparent;
+    color: var(--text-color-light);
+    border: none;
+    outline: none;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.language-selector option {
+    background-color: var(--background-dark); /* Options background */
+    color: var(--text-color-light);
+}
+
+.contact-info a {
+    color: var(--text-color-light);
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: var(--accent-color);
+}
+
+.social-links a {
+    color: var(--text-color-light);
+    font-size: 1em;
+    margin-left: 15px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+.auth-links .btn-login,
+.auth-links .btn-register {
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    margin-left: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.auth-links .btn-login {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.auth-links .btn-login:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+}
+
+.auth-links .btn-register {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    border: 1px solid var(--primary-color);
+}
+
+.auth-links .btn-register:hover {
+    background-color: var(--primary-hover-color);
+    border-color: var(--primary-hover-color);
+}
+
+/* User Dropdown (LoggedIn state) */
+.user-menu-dropdown {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.user-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--accent-color);
+    display: flex; /* For centering img if needed */
+    justify-content: center;
+    align-items: center;
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px); /* Position below avatar */
+    right: 0;
+    background-color: var(--background-light);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 180px;
+    z-index: 10; /* Ensure it's above other content */
+    display: none; /* Hidden by default, shown by JS */
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.user-dropdown-menu.active { /* Class added by JS */
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.user-dropdown-menu li a {
+    display: block;
+    padding: 10px 15px;
+    color: var(--text-color-dark);
+    white-space: nowrap; /* Prevent text wrapping */
+    transition: background-color 0.2s ease;
+}
+
+.user-dropdown-menu li a:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+}
+
+.user-dropdown-menu li a i {
+    margin-right: 8px;
+    color: var(--primary-color); /* Icon color */
+}
+.user-dropdown-menu li a:hover i {
+    color: var(--text-color-light); /* Icon color on hover */
+}
+
+
+/* Main Navigation Styles */
+.main-navigation {
+    padding: 15px 0;
+}
+
+.main-navigation .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: var(--text-color-dark);
+    transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+    opacity: 0.8;
+}
+
+.logo-text {
+    font-family: var(--font-montserrat);
+    font-size: 1.8em;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.logo-highlight {
+    color: var(--primary-color);
+}
+
+.logo-tagline {
+    font-family: var(--font-sono);
+    font-size: 0.75em;
+    color: var(--secondary-color);
+    margin-top: 3px;
+    letter-spacing: 1px;
+}
+
+/* Navigation Menu */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Space between main nav items */
+}
+
+.nav-item {
+    position: relative; /* For dropdown positioning */
+}
+
+.nav-link {
+    display: block;
+    padding: 10px 0;
+    color: var(--text-color-dark);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.nav-link i.fa-chevron-down {
+    font-size: 0.7em;
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+/* Dropdown Menu (Packages) */
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 5px); /* Position below parent link */
+    left: 0;
+    background-color: var(--background-light);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    z-index: 99; /* Ensure it's above other content */
+    display: none; /* Hidden by default */
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block; /* Show on hover for desktop */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 15px;
+    color: var(--text-color-dark);
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-menu li a:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+}
+
+.dropdown-menu li a i {
+    margin-right: 8px;
+    color: var(--primary-color); /* Icon color */
+}
+.dropdown-menu li a:hover i {
+    color: var(--text-color-light); /* Icon color on hover */
+}
+
+
+/* Book Now Button in Nav */
+.nav-item.book-now .btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+}
+
+.nav-item.book-now .btn-primary:hover {
+    background-color: var(--primary-hover-color);
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none; /* Hidden by default on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; /* Above other content */
+}
+
+.menu-icon {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color-dark);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* Animation for toggle icon */
+.mobile-menu-toggle.active .menu-icon:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-menu-toggle.active .menu-icon:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active .menu-icon:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Responsive Styles (Media Queries) */
+@media (max-width: 992px) {
+    .top-bar .container {
+        flex-direction: column; /* Stack top-bar content vertically */
+        align-items: flex-start;
+    }
+
+    .top-bar-left,
+    .top-bar-right {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 8px; /* Space between stacked sections */
+    }
+    .top-bar-left { order: 2; /* Put contact/lang below social/auth */ }
+    .top-bar-right { order: 1; }
+
+    .language-selector, .contact-info, .social-links, .auth-links {
+        margin-right: 10px; /* Adjust spacing for smaller screens */
+        margin-left: 10px;
+        margin-bottom: 5px;
+    }
+    .contact-info a { margin-right: 10px; }
+
+
+    .mobile-menu-toggle {
+        display: block; /* Show hamburger icon on mobile */
+    }
+
+    .nav-menu {
+        flex-direction: column; /* Stack nav items vertically */
+        position: absolute;
+        top: 100%; /* Position below header */
+        left: 0;
+        width: 100%;
+        background-color: var(--background-light);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transform: translateX(-100%); /* Hide off-screen initially */
+        transition: transform 0.3s ease-in-out;
+        z-index: 990;
+        padding: 20px 0;
+        gap: 0; /* Remove gap for stacked items */
+    }
+
+    .nav-menu.active {
+        transform: translateX(0); /* Slide in when active */
+    }
+
+    .nav-item {
+        width: 100%;
+        text-align: center; /* Center nav items */
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-item:last-child {
+        border-bottom: none;
+    }
+
+    .nav-link {
+        padding: 15px 0; /* Larger clickable area */
+    }
+
+    /* Adjust dropdowns for mobile */
+    .dropdown-menu {
+        position: static; /* Remove absolute positioning */
+        display: none; /* Managed by JS for mobile click toggle */
+        width: 100%;
+        border: none; /* No border for sub-menu */
+        box-shadow: none;
+        background-color: #f0f0f0; /* Slightly different background for distinction */
+        padding: 0;
+        margin-top: 5px; /* Space below parent link */
+        transform: none; /* No transform needed */
+        opacity: 1; /* Always visible when displayed by JS */
+    }
+
+    .dropdown-menu li a {
+        padding: 10px 30px; /* Indent sub-items */
+        text-align: center;
+    }
+
+    /* Hide desktop hover effect for dropdowns on mobile */
+    .nav-item.dropdown:hover .dropdown-menu {
+        display: none;
+    }
+
+    .nav-link i.fa-chevron-down {
+        margin-left: 10px; /* Adjust icon position */
+    }
+}
+
+@media (max-width: 576px) {
+    /* Further adjustments for very small screens */
+    .logo-text {
+        font-size: 1.5em;
+    }
+    .logo-tagline {
+        font-size: 0.7em;
+    }
+
+    .top-bar-left, .top-bar-right {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 0;
+    }
+
+    .language-selector, .contact-info, .social-links, .auth-links {
+        margin: 5px 0; /* Stack vertically with space */
+        justify-content: center;
+    }
+    .contact-info a { margin-right: 0; } /* Remove horizontal margins */
+    .social-links a { margin: 0 8px; } /* Small horizontal space */
+    .auth-links { flex-direction: column; }
+    .auth-links .btn-login, .auth-links .btn-register { margin: 5px 0; }
+}

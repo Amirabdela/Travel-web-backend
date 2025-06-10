@@ -1,0 +1,228 @@
+/* Re-using variables from your global/header CSS for consistency */
+:root {
+    --primary-color: #007bff;
+    --primary-hover-color: #0056b3;
+    --secondary-color: #6c757d;
+    --accent-color: #ffc107;
+    --text-color-dark: #333;
+    --text-color-light: #f8f9fa;
+    --background-light: #ffffff;
+    --background-dark: #343a40;
+    --border-color: #dee2e6;
+    --font-poppins: 'Poppins', sans-serif;
+    --font-montserrat: 'Montserrat', sans-serif;
+    /* Added a card specific background/shadow for subtle lift */
+    --card-bg: #ffffff;
+    --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    --card-hover-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Global Container and Spacing (if not already defined in a global CSS) */
+/* .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+} */
+
+.mt-4 {
+    margin-top: 1.5rem !important; /* Matches Bootstrap's mt-4 */
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem !important; /* Matches Bootstrap's mb-4 */
+}
+
+/* Page Title */
+h1 {
+    font-family: var(--font-montserrat);
+    color: var(--text-color-dark);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+/* Filter Buttons */
+.mb-4 {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap */
+    justify-content: center; /* Center the buttons */
+    gap: 10px; /* Space between buttons */
+    margin-bottom: 30px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    white-space: nowrap; /* Prevent button text from wrapping */
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    border: 1px solid var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover-color);
+    border-color: var(--primary-hover-color);
+    transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+.btn-outline-primary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+/* Active filter button style (add this class with JS) */
+.btn-outline-primary.active {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    border-color: var(--primary-color);
+}
+
+
+/* Packages Grid Layout */
+.row {
+    display: flex;
+    flex-wrap: wrap; /* Essential for responsive grid */
+    margin-left: -15px; /* Compensate for column padding */
+    margin-right: -15px;
+}
+
+.col-md-4 {
+    /* Using calc for responsive columns */
+    flex: 0 0 calc(33.333% - 30px); /* 3 columns, accounting for gap */
+    max-width: calc(33.333% - 30px);
+    margin: 0 15px 30px; /* Horizontal margin (half of gap), bottom margin */
+    /* If you're using Bootstrap's grid system, col-md-4 classes would handle this.
+       This provides a fallback/alternative if Bootstrap CSS isn't fully loaded for grid. */
+}
+
+
+/* Package Card Styles */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden; /* Ensures image corners are rounded */
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Make card a flex container */
+    flex-direction: column; /* Stack content vertically */
+    height: 100%; /* Ensure all cards in a row are same height */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Lift card on hover */
+    box-shadow: var(--card-hover-shadow);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 200px; /* Fixed height for consistent image size */
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    border-bottom: 1px solid var(--border-color); /* Separator from body */
+}
+
+.card-body {
+    padding: 20px;
+    flex-grow: 1; /* Allows card body to fill available space in card */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-family: var(--font-montserrat);
+    font-size: 1.3em;
+    font-weight: 600;
+    color: var(--primary-color); /* Highlight package titles */
+    margin-bottom: 10px;
+}
+
+.card-text {
+    color: var(--text-color-dark);
+    font-size: 0.95em;
+    margin-bottom: 10px;
+    flex-grow: 1; /* Allow description to take up space */
+}
+
+.card-text small.text-muted {
+    font-size: 0.85em;
+    color: var(--secondary-color) !important; /* Ensure muted text is grey */
+    display: block; /* Make sure it takes its own line */
+    margin-bottom: 5px;
+}
+
+.card-text strong {
+    font-size: 1.1em;
+    color: var(--text-color-dark); /* Ensure price is clear */
+    display: block; /* Make price stand out on its own line */
+    margin-top: 10px;
+}
+
+.card-body .btn-primary {
+    margin-top: 15px; /* Space between price and button */
+    align-self: flex-start; /* Align button to the left within card body */
+    padding: 10px 25px; /* Adjust button size for "View Details" */
+    font-size: 1em;
+    font-weight: 700;
+}
+
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .col-md-4 {
+        /* On medium screens (e.g., tablets), display 2 columns */
+        flex: 0 0 calc(50% - 30px);
+        max-width: calc(50% - 30px);
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .mb-4 {
+        justify-content: flex-start; /* Align buttons to the left */
+        padding: 0 15px; /* Add padding to buttons container */
+    }
+
+    .col-md-4 {
+        /* On small screens (e.g., phones), display 1 column */
+        flex: 0 0 calc(100% - 30px); /* Full width minus margin */
+        max-width: calc(100% - 30px);
+    }
+
+    .card-img-top {
+        height: 180px; /* Slightly smaller images on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .card-body {
+        padding: 15px; /* Reduce padding inside cards */
+    }
+    .card-title {
+        font-size: 1.2em;
+    }
+    .card-text {
+        font-size: 0.9em;
+    }
+    .card-img-top {
+        height: 160px;
+    }
+}
