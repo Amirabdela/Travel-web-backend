@@ -30,6 +30,8 @@ class Users extends Controller {
             // Validate email
             if(empty($data['email'])) {
                 $data['email_err'] = 'Please enter email';
+            } elseif(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                $data['email_err'] = 'Invalid email format';
             } elseif($this->userModel->findByEmail($data['email'])) {
                 $data['email_err'] = 'Email is already taken';
             }
@@ -37,9 +39,14 @@ class Users extends Controller {
             // Validate name
             if(empty($data['first_name'])) {
                 $data['first_name_err'] = 'Please enter first name';
+            } elseif(strlen($data['first_name']) < 2) {
+                $data['first_name_err'] = 'First name must be at least 2 characters';
             }
+
             if(empty($data['last_name'])) {
                 $data['last_name_err'] = 'Please enter last name';
+            } elseif(strlen($data['last_name']) < 2) {
+                $data['last_name_err'] = 'Last name must be at least 2 characters';
             }
 
             // Validate password
@@ -67,10 +74,11 @@ class Users extends Controller {
 
                 // Register user
                 if($this->userModel->register($data)) {
-                    flash('register_success', 'Registration successful! You can now log in.');
+                    flash('register_success', 'Registration successful! You can now log in.', 'alert alert-success');
                     redirect('users/login');
                 } else {
-                    die('Something went wrong');
+                    flash('register_error', 'Registration failed. Please try again.', 'alert alert-danger');
+                    $this->view('users/register', $data);
                 }
             } else {
                 // Load view with errors
@@ -138,6 +146,7 @@ class Users extends Controller {
                     $_SESSION['user_id'] = $loggedInUser->id;
                     $_SESSION['user_email'] = $loggedInUser->email;
                     $_SESSION['user_name'] = $loggedInUser->first_name;
+                    $_SESSION['user_role'] = $loggedInUser->role;
                     flash('login_success', 'Welcome back, ' . $loggedInUser->first_name . '!');
                     redirect('pages/index');
                 } else {
@@ -248,5 +257,18 @@ class Users extends Controller {
             // Load view
             $this->view('users/edit', $data);
         }
+    }
+
+    // List all users
+    public function list() {
+        // Get all users
+        $users = $this->userModel->getAllUsers();
+        
+        // Pass to view
+        $data = [
+            'users' => $users
+        ];
+        
+        $this->view('users/list', $data);
     }
 } 

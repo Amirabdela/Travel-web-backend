@@ -53,9 +53,9 @@ require APPROOT . '/views/inc/header.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $destination['name']; ?> - Travel Habesha</title>
     <link rel="stylesheet" href="styles/base.css">
-    <link rel="stylesheet" href="styles/header.css">
-    <link rel="stylesheet" href="styles/footer.css">
-    <link rel="stylesheet" href="/styles/destination.css">
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+    <link rel="stylesheet" href="/css/pages/destination.css">
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">

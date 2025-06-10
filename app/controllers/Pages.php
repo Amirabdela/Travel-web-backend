@@ -1,13 +1,18 @@
 <?php
 class Pages extends Controller {
+    private $destinationModel;
+
     public function __construct() {
-        // Load models if needed
+        $this->destinationModel = $this->model('Destination');
     }
 
     public function index() {
+        // Get featured destinations
+        $featuredDestinations = $this->destinationModel->getFeaturedDestinations(3);
+
         $data = [
             'title' => 'Welcome to Travel Habesha',
-            'description' => 'Your trusted partner for unforgettable travel experiences in Ethiopia'
+            'featuredDestinations' => $featuredDestinations
         ];
 
         $this->view('pages/index', $data);

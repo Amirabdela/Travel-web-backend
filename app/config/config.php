@@ -6,10 +6,10 @@ define('DB_NAME', dirname(dirname(dirname(__FILE__))) . '/database/travel_site.d
 // Application Configuration
 define('APPROOT', dirname(dirname(__FILE__)));
 define('URLROOT', 'http://localhost/travel-site/public');
-define('SITENAME', 'Travel Habesha');
+define('SITENAME', 'Travel Site');
 
 // Session Configuration
-define('SESSION_NAME', 'travel_habesha_session');
+define('SESSION_NAME', 'travel_site_session');
 define('SESSION_LIFETIME', 7200); // 2 hours
 
 // File Upload Configuration

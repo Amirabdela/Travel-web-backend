@@ -6,30 +6,30 @@
         <form action="<?php echo URLROOT; ?>/users/register" method="post" class="register-form">
             <div class="form-group">
                 <label for="first_name">First Name: <sup>*</sup></label>
-                <input type="text" name="first_name" id="first_name" 
-                       class="<?php echo (!empty($data['first_name_err'])) ? 'is-invalid' : ''; ?>"
-                       value="<?php echo $data['first_name']; ?>">
+                <input type="text" name="first_name" id="first_name"
+                    class="<?php echo (!empty($data['first_name_err'])) ? 'is-invalid' : ''; ?>"
+                    value="<?php echo $data['first_name']; ?>">
                 <span class="invalid-feedback"><?php echo $data['first_name_err']; ?></span>
             </div>
             <div class="form-group">
                 <label for="last_name">Last Name: <sup>*</sup></label>
-                <input type="text" name="last_name" id="last_name" 
-                       class="<?php echo (!empty($data['last_name_err'])) ? 'is-invalid' : ''; ?>"
-                       value="<?php echo $data['last_name']; ?>">
+                <input type="text" name="last_name" id="last_name"
+                    class="<?php echo (!empty($data['last_name_err'])) ? 'is-invalid' : ''; ?>"
+                    value="<?php echo $data['last_name']; ?>">
                 <span class="invalid-feedback"><?php echo $data['last_name_err']; ?></span>
             </div>
             <div class="form-group">
                 <label for="email">Email: <sup>*</sup></label>
-                <input type="email" name="email" id="email" 
-                       class="<?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>"
-                       value="<?php echo $data['email']; ?>">
+                <input type="email" name="email" id="email"
+                    class="<?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>"
+                    value="<?php echo $data['email']; ?>">
                 <span class="invalid-feedback"><?php echo $data['email_err']; ?></span>
             </div>
             <div class="form-group">
                 <label for="password">Password: <sup>*</sup></label>
                 <div class="password-wrapper">
-                    <input type="password" name="password" id="password" 
-                           class="<?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>">
+                    <input type="password" name="password" id="password"
+                        class="<?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>">
                     <span class="password-toggle" onclick="togglePassword('password')">
                         <i class="fas fa-eye"></i>
                     </span>
@@ -39,8 +39,8 @@
             <div class="form-group">
                 <label for="confirm_password">Confirm Password: <sup>*</sup></label>
                 <div class="password-wrapper">
-                    <input type="password" name="confirm_password" id="confirm_password" 
-                           class="<?php echo (!empty($data['confirm_password_err'])) ? 'is-invalid' : ''; ?>">
+                    <input type="password" name="confirm_password" id="confirm_password"
+                        class="<?php echo (!empty($data['confirm_password_err'])) ? 'is-invalid' : ''; ?>">
                     <span class="password-toggle" onclick="togglePassword('confirm_password')">
                         <i class="fas fa-eye"></i>
                     </span>
@@ -75,7 +75,7 @@
 function togglePassword(inputId) {
     const passwordInput = document.getElementById(inputId);
     const toggleIcon = passwordInput.nextElementSibling.querySelector('i');
-    
+
     if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
         toggleIcon.classList.remove('fa-eye');
@@ -94,7 +94,7 @@ document.querySelector('.register-form').addEventListener('submit', function(e) 
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const confirm_password = document.getElementById('confirm_password').value;
-    
+
     if (!first_name || !last_name || !email || !password || !confirm_password) {
         e.preventDefault();
         alert('Please fill in all required fields');
@@ -105,4 +105,4 @@ document.querySelector('.register-form').addEventListener('submit', function(e) 
 });
 </script>
 
-<?php require APPROOT . '/views/inc/footer.php'; ?> 
+<?php require APPROOT . '/views/inc/footer.php'; ?>
