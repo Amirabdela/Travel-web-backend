@@ -1,0 +1,324 @@
+:root {
+	--primary-color: #007bff; /* A vibrant blue for main actions */
+	--dark-grey: #343a40; /* Dark text/headings */
+	--white: #ffffff; /* Background for cards/forms */
+	--light-grey: #f8f9fa; /* Page background */
+	--text-color: #555; /* General text color */
+	/* You can add more like --success-color, --error-color if needed */
+}
+/* Auth Section (Login/Register Page Styles) */
+
+body {
+    background-color: var(--light-grey); /* Light background for the whole page */
+    display: flex;
+    flex-direction: column; /* For footer to stick to bottom if content is short */
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif; /* Consistent font */
+}
+
+/* Ensure main content pushes footer down */
+.auth-section {
+    flex-grow: 1; /* Allows it to take up available space */
+    display: flex;
+    align-items: center; /* Vertically center the form */
+    justify-content: center; /* Horizontally center the form */
+    padding: 40px 20px; /* Some padding around the container */
+}
+
+.auth-container {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Deeper shadow for prominence */
+    max-width: 450px; /* Constrain width for readability */
+    width: 100%; /* Take full width up to max-width */
+    text-align: center; /* Center headings and links */
+    animation: fadeIn 0.5s ease-out; /* Subtle animation on load */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auth-container h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    color: var(--dark-grey);
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+/* Flash Messages */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.alert.alert-success { /* Assuming flash messages use alert-success/error classes */
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert.alert-danger { /* For general error messages */
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+
+/* Form Styling */
+.login-form {
+    text-align: left; /* Align form elements to the left */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--dark-grey);
+    font-size: 1rem;
+}
+
+.form-group label sup {
+    color: #dc3545; /* Red for required asterisk */
+    font-size: 0.8em;
+    vertical-align: top;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box; /* Include padding in width */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Subtle focus highlight */
+}
+
+/* Invalid feedback for validation errors */
+.form-group input.is-invalid {
+    border-color: #dc3545; /* Red border for invalid input */
+}
+
+.invalid-feedback {
+    color: #dc3545; /* Red text for error messages */
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: block; /* Ensure it takes its own line */
+}
+
+/* Password Toggle Wrapper */
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.password-wrapper input {
+    padding-right: 45px; /* Make space for the icon */
+}
+
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+    font-size: 1.1rem;
+    transition: color 0.2s ease;
+}
+
+.password-toggle:hover {
+    color: var(--dark-grey);
+}
+
+
+/* Submit Button */
+.btn-primary {
+    display: block;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 15px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px; /* Space above button */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker primary color on hover */
+    transform: translateY(-2px); /* Subtle lift effect */
+}
+
+/* Auth Links (Register, Forgot Password) */
+.auth-links {
+    margin-top: 25px;
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+.auth-links p {
+    margin-bottom: 10px; /* Space between paragraphs if multiple */
+}
+
+.auth-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+/* Social Login Section */
+.social-login {
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 25px;
+}
+
+.social-login p {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.social-buttons {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 15px; /* Space between social buttons */
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.social-btn i {
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+.social-btn.google {
+    background-color: #db4437; /* Google Red */
+    color: var(--white);
+    border-color: #db4437;
+}
+
+.social-btn.google:hover {
+    background-color: #c0392b;
+    border-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+.social-btn.facebook {
+    background-color: #3b5998; /* Facebook Blue */
+    color: var(--white);
+    border-color: #3b5998;
+}
+
+.social-btn.facebook:hover {
+    background-color: #2d4373;
+    border-color: #2d4373;
+    transform: translateY(-2px);
+}
+
+.social-btn.twitter {
+    background-color: #1da1f2; /* Twitter Blue */
+    color: var(--white);
+    border-color: #1da1f2;
+}
+
+.social-btn.twitter:hover {
+    background-color: #0c85d0;
+    border-color: #0c85d0;
+    transform: translateY(-2px);
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 600px) {
+    .auth-container {
+        padding: 30px 25px;
+        margin: 20px; /* Less margin on smaller screens */
+    }
+
+    .auth-container h2 {
+        font-size: 2rem;
+        margin-bottom: 25px;
+    }
+
+    .btn-primary {
+        padding: 12px 20px;
+        font-size: 1.05rem;
+    }
+
+    .social-btn {
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .auth-container {
+        padding: 25px 20px;
+    }
+
+    .auth-container h2 {
+        font-size: 1.8rem;
+    }
+
+    .form-group label,
+    .form-group input,
+    .invalid-feedback,
+    .auth-links p,
+    .social-login p {
+        font-size: 0.9rem;
+    }
+
+    .password-toggle {
+        font-size: 1rem;
+        right: 12px;
+    }
+}
