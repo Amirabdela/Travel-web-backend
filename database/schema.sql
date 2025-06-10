@@ -33,39 +33,6 @@ CREATE TABLE IF NOT EXISTS destinations (
 );
 drop table destinations
 
--- Destination Gallery table
-CREATE TABLE IF NOT EXISTS destination_gallery (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    destination_id INTEGER NOT NULL,
-    image_url VARCHAR(255) NOT NULL,
-    caption TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (destination_id) REFERENCES destinations(id) ON DELETE CASCADE
-);
-
--- Attractions table
-CREATE TABLE IF NOT EXISTS attractions (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    destination_id INTEGER NOT NULL,
-    name VARCHAR(100) NOT NULL,
-    description TEXT,
-    image_url VARCHAR(255),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (destination_id) REFERENCES destinations(id) ON DELETE CASCADE
-);
-
--- Destination Reviews table
-CREATE TABLE IF NOT EXISTS destination_reviews (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    destination_id INTEGER NOT NULL,
-    user_id INTEGER NOT NULL,
-    rating INTEGER NOT NULL CHECK (rating >= 1 AND rating <= 5),
-    comment TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (destination_id) REFERENCES destinations(id) ON DELETE CASCADE,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-);
-
 -- Hotels table
 drop table hotels 
 CREATE TABLE IF NOT EXISTS hotels (
@@ -113,17 +80,6 @@ CREATE TABLE IF NOT EXISTS bookings (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 select * from bookings
--- Reviews table
-CREATE TABLE IF NOT EXISTS reviews (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user_id INTEGER NOT NULL,
-    review_type VARCHAR(20) NOT NULL, -- 'hotel', 'car', 'destination'
-    item_id INTEGER NOT NULL,
-    rating INTEGER NOT NULL CHECK (rating >= 1 AND rating <= 5),
-    comment TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-);
 
 -- Packages table
 CREATE TABLE IF NOT EXISTS packages (

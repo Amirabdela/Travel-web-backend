@@ -16,15 +16,6 @@ INSERT INTO destination_gallery (destination_id, image_url, caption) VALUES
 (3, 'https://images.unsplash.com/photo-1597220667202-0c7c5d5a9c8e', 'Colorful sulfur springs in Danakil'),
 (3, 'https://images.unsplash.com/photo-1597220667202-0c7c5d5a9c8e', 'Erta Ale lava lake');
 
--- Insert sample attractions (Ethiopian version)
-INSERT INTO attractions (destination_id, name, description, image_url) VALUES
-(1, 'Bete Giyorgis', 'Most famous cross-shaped rock-hewn church', 'https://images.unsplash.com/photo-1604537466573-5e94508fd243'),
-(1, 'Lalibela Market', 'Traditional Ethiopian market with local crafts', 'https://images.unsplash.com/photo-1604537466158-8a6c14b2c33e'),
-(2, 'Gelada Monkeys', 'Unique primates found only in Ethiopian highlands', 'https://images.unsplash.com/photo-1585409677003-3b37a9a52492'),
-(2, 'Ras Dashen', 'Ethiopia''s highest peak at 4,550 meters', 'https://images.unsplash.com/photo-1585409677003-3b37a9a52492'),
-(3, 'Erta Ale Volcano', 'One of the few permanent lava lakes in the world', 'https://images.unsplash.com/photo-1597220667202-0c7c5d5a9c8e'),
-(3, 'Dallol Sulfur Springs', 'Vibrant acidic springs creating surreal colors', 'https://images.unsplash.com/photo-1597220667202-0c7c5d5a9c8e');
-
 -- Insert sample hotels (Ethiopian version)
 INSERT INTO hotels (name, description, location, image, price_per_night, rating, type, amenities) VALUES
 ('Lalibela Lodge', 'Eco-friendly lodge with stunning views of the churches', 'Lalibela, Ethiopia', 'https://images.unsplash.com/photo-1604537466158-8a6c14b2c33e', 150.00, 4.7, 'Lodge', 'Restaurant, Cultural Shows, Guided Tours'),
