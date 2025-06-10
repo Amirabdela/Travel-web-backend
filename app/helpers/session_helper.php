@@ -34,4 +34,26 @@ function isLoggedIn() {
 // Check if user is admin
 function isAdmin() {
     return isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true;
+}
+
+// Clean input data
+function cleanInput($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+// Get user avatar
+function getUserAvatar($user_id) {
+    $avatar_path = 'public/images/avatars/' . $user_id . '.jpg';
+    $default_avatar = 'public/images/avatars/default.jpg';
+    
+    // Check if user has a custom avatar
+    if (file_exists($avatar_path)) {
+        return $avatar_path;
+    }
+    
+    // Return default avatar if no custom avatar exists
+    return $default_avatar;
 } 

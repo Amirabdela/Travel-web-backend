@@ -7,9 +7,20 @@ class Destination extends Model {
     }
 
     public function getFeaturedDestinations($limit = 6) {
-        $sql = "SELECT * FROM destinations 
+        $sql = "SELECT d.*, 
+                CASE 
+                    WHEN d.image IS NULL OR d.image = '' THEN 
+                        CASE d.category
+                            WHEN 'Cultural' THEN 'https://images.unsplash.com/photo-1591456983933-0c264720bcd3?w=800&auto=format&fit=crop&q=60'
+                            WHEN 'Adventure' THEN 'https://images.unsplash.com/photo-1591456983933-0c264720bcd3?w=800&auto=format&fit=crop&q=60'
+                            WHEN 'Historical' THEN 'https://images.unsplash.com/photo-1591456983933-0c264720bcd3?w=800&auto=format&fit=crop&q=60'
+                            ELSE 'https://images.unsplash.com/photo-1591456983933-0c264720bcd3?w=800&auto=format&fit=crop&q=60'
+                        END
+                    ELSE d.image 
+                END as image_url
+                FROM destinations d
                 WHERE featured = 1 
-                ORDER BY RAND() LIMIT :limit";
+                ORDER BY random() LIMIT :limit";
         $this->db->query($sql);
         $this->db->bind(':limit', $limit);
         return $this->db->resultSet();

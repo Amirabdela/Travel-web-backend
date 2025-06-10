@@ -66,11 +66,17 @@ class Database {
     // Execute the prepared statement
     public function execute() {
         try {
-            return $this->stmt->execute();
+            $result = $this->stmt->execute();
+            if (!$result) {
+                $error = $this->stmt->errorInfo();
+                error_log("Query Execution Error: " . print_r($error, true));
+                throw new Exception("Query execution failed: " . $error[2]);
+            }
+            return $result;
         } catch(PDOException $e) {
             $this->error = $e->getMessage();
             error_log("Query Execution Error: " . $this->error);
-            throw new Exception("Query execution failed.");
+            throw new Exception("Query execution failed: " . $this->error);
         }
     }
 
@@ -110,17 +116,35 @@ class Database {
 
     // Begin transaction
     public function beginTransaction() {
-        return $this->dbh->beginTransaction();
+        try {
+            return $this->dbh->beginTransaction();
+        } catch(PDOException $e) {
+            $this->error = $e->getMessage();
+            error_log("Begin Transaction Error: " . $this->error);
+            throw new Exception("Failed to begin transaction: " . $this->error);
+        }
     }
 
     // Commit transaction
     public function commit() {
-        return $this->dbh->commit();
+        try {
+            return $this->dbh->commit();
+        } catch(PDOException $e) {
+            $this->error = $e->getMessage();
+            error_log("Commit Transaction Error: " . $this->error);
+            throw new Exception("Failed to commit transaction: " . $this->error);
+        }
     }
 
     // Rollback transaction
     public function rollBack() {
-        return $this->dbh->rollBack();
+        try {
+            return $this->dbh->rollBack();
+        } catch(PDOException $e) {
+            $this->error = $e->getMessage();
+            error_log("Rollback Transaction Error: " . $this->error);
+            throw new Exception("Failed to rollback transaction: " . $this->error);
+        }
     }
 
     // Get error message
@@ -142,7 +166,7 @@ class Database {
         } catch(PDOException $e) {
             $this->error = $e->getMessage();
             error_log("Get Columns Error: " . $this->error);
-            throw new Exception("Failed to get table columns.");
+            return [];
         }
     }
 
@@ -156,7 +180,7 @@ class Database {
         } catch(PDOException $e) {
             $this->error = $e->getMessage();
             error_log("Table Exists Check Error: " . $this->error);
-            throw new Exception("Failed to check if table exists.");
+            return false;
         }
     }
 
@@ -169,7 +193,7 @@ class Database {
         } catch(PDOException $e) {
             $this->error = $e->getMessage();
             error_log("Get Tables Error: " . $this->error);
-            throw new Exception("Failed to get tables.");
+            return [];
         }
     }
 } 

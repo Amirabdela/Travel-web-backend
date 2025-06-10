@@ -24,6 +24,7 @@ require_once APPROOT . '/helpers/session_helper.php';
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/pages/about.css">
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/pages/contact.css">
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/pages/auth.css">
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/pages/home.css">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -199,15 +200,5 @@ require_once APPROOT . '/helpers/session_helper.php';
                     }
                 });
             }
-
-            // Handle window resize
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 992) {
-                    const dropdownMenus = document.querySelectorAll('.dropdown-menu');
-                    dropdownMenus.forEach(menu => {
-                        menu.style.display = '';
-                    });
-                }
-            });
         });
         </script>
